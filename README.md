@@ -120,7 +120,7 @@ El uso de la IA se centró en generar el **"qué"** (las reglas y heurísticas) 
 
 1.  Clonar el repositorio:
     ```bash
-    git clone [https://docs.github.com/en/repositories/creating-and-managing-repositories/deleting-a-repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/deleting-a-repository)
+    git clone
     cd pokefusion-app
     ```
 2.  Instalar dependencias:
