@@ -1,0 +1,70 @@
+<div class="fusion-container">
+
+    <header>
+        <h1>🧪 PokéFusion Lab</h1>
+        <button (click)="loadRandomPokemon()" [disabled]="isLoading" class="primary-button">
+            {{ isLoading ? 'Cargando...' : 'Elegir 3 Pokémon Base Aleatorios' }}
+        </button>
+    </header>
+
+    <div *ngIf="isLoading" class="loading-message">
+        Cargando Pokémon... ¡Preparando la fusión! Por favor espera.
+    </div>
+
+    <div *ngIf="error" class="error-message">
+        ⚠️ {{ error }}
+    </div>
+
+    <div *ngIf="!isLoading && basePokemon.length > 0" class="base-pokemon-list">
+        <h2>Pokémon Base Seleccionados</h2>
+        <div *ngFor="let pokemon of basePokemon" class="pokemon-card">
+            <h3>{{ pokemon.name | titlecase }}</h3>
+            <img [src]="pokemon.sprites.front_default" [alt]="'Sprite de ' + pokemon.name" class="pokemon-sprite">
+            
+            <p class="type-badge">Tipo: {{ getPokemonTypes(pokemon) | titlecase }}</p>
+        </div>
+    </div>
+    
+    <div *ngIf="fusedPokemon" class="fusion-result-card">
+        <hr>
+        <h2>🔥 {{ fusedPokemon.name | titlecase }} 🔥</h2>
+        <p class="fusion-types">Tipos Fusionados: **{{ fusedPokemon.types.join(', ') | titlecase }}**</p>
+        <p class="fusion-moves">Movimientos Seleccionados: {{ fusedPokemon.moves.join(', ') }}</p>
+
+        <div class="stats-summary">
+            <h3>Estadísticas Fusionadas (Promedio):</h3>
+            <ul>
+                <li *ngFor="let stat of fusedPokemon.stats">
+                    {{ stat.name | uppercase }}: **{{ stat.value }}**
+                </li>
+            </ul>
+        </div>
+
+        <div class="fusion-actions">
+            <button (click)="saveFavorite()" class="save-button" [disabled]="!fusedPokemon">
+                ⭐ Guardar Favorito
+            </button>
+            
+            <button (click)="reFuse()" class="refuse-button">
+                ✨ Re-Fusionar (Nuevo Nombre/Movs) ✨
+            </button>
+        </div>
+        <p class="small-text">La re-fusión vuelve a aplicar las reglas de IA/heurísticas.</p>
+    </div>
+
+    <div class="favorites-list" *ngIf="favorites$ | async as favorites">
+        <hr>
+        <h3>Mis Favoritos Guardados ({{ favorites.length }})</h3>
+        
+        <p *ngIf="favorites.length === 0" class="empty-state">Aún no tienes fusiones guardadas. ¡Guarda una con el botón ⭐!</p>
+        
+        <ul *ngIf="favorites.length > 0" class="favorite-names">
+            <li *ngFor="let fav of favorites">
+                {{ fav.name | titlecase }} 
+                <button (click)="removeFavorite(fav.name)" class="delete-button">
+                    🗑️ Eliminar
+                </button>
+            </li>
+        </ul>
+    </div>
+</div>
