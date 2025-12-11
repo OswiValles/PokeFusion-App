@@ -4,7 +4,7 @@ Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-
 
 ---
 
-## 🎯 Reto Elegido y Alcance
+## Reto Elegido y Alcance
 
 El objetivo es fusionar tres Pokémon base de PokeAPI para crear una nueva criatura.
 
@@ -99,7 +99,7 @@ Utilicé herramientas de IA generativa (principalmente Gemini) como copiloto y g
 
 ---
 
-## 🚀 Instalación y Despliegue
+## Instalación y Despliegue
 
 ### Requisitos
 
