@@ -43,7 +43,7 @@ El sistema de persistencia utiliza Firestore para almacenar la colección `favor
 
 ### Reglas de Seguridad (Resumidas)
 
-Las reglas están configuradas para permitir la lectura pública, pero restringir la escritura a usuarios autenticados.
+Las reglas están configuradas para permitir la lectura pública, pero restringir la escritura a usuarios autenticados. Las reglas se configuraron inicialmente de manera segura, pero se cambiaron temporalmente a if true para la demostración de la funcionalidad CRUD completa debido a la falta de un sistema de login.
 
 ```firestore
 rules_version = '2';
